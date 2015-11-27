@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		
+	</head>
+	<body>
+
+		<h1>Locations</h1>	
+		<div id="location"></div>
+		<button id="button">Get my location</button>
+		<!-- <button id="reset">Remove location</button> -->
+
+		<h1>Location 2</h1>
+		<div id="location2"></div>
+		<button id="button2">Get another location</button>
+		<button id="reset">Remove location</button>
+		
+		<h1>Distance between two location</h1>
+		<div id="dist"></div>
+		<button id="get">Total</button>
+	</body>
+	 
+		<script src="geolib.min.js"></script>
+
+		<script type="text/javascript">
+		var loca = {latitude : "",longitude : ""};
+		var loca2 = {latitude : "",longitude : ""};
+
+		
+		var button = document.getElementById('button');
+		button.addEventListener('click', function(){
+
+			navigator.geolocation.getCurrentPosition(function(location){
+				var loc = document.getElementById("location");
+					loc.innerHTML = location.coords.latitude +
+				" , " + location.coords.longitude;
+				loca.latitude = location.coords.latitude;
+				loca.longitude = location.coords.longitude;
+				console.log(loca); 
+			}); 
+		});
+
+			var reset = document.getElementById('reset');
+			reset.addEventListener('click', function(location){
+				var loc = document.getElementById("location");
+					var location = loc.innerHTML = ""; 
+				 var loc = document.getElementById("location2");
+				 	var location2 = loc.innerHTML = ""; 
+				var get = document.getElementById("get");
+				 	var d= dist.innerHTML = ""; 
+			
+							
+		});
+
+
+		var button2 = document.getElementById('button2');
+		button2.addEventListener('click', function(){
+
+			navigator.geolocation.getCurrentPosition(function(location){
+				var loc = document.getElementById("location2");
+				loc.innerHTML = location.coords.latitude +
+				" , " + location.coords.longitude;
+				loca2.latitude = location.coords.latitude;
+				loca2.longitude = location.coords.longitude;
+				console.log(loca2);
+			});
+			
+		});
+
+		
+		var get = document.getElementById("get");
+		get.addEventListener('click', function(){
+			var d = geolib.getDistance(loca,loca2);
+
+			dist.innerHTML = d;
+			console.log(d);
+			});
+
+			
+		 
+
+		
+		</script>
+
+	</html>	
